@@ -59,6 +59,44 @@ const Contact = () => {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            {/* Contact Info */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="gradient-card rounded-2xl p-6 shadow-elegant">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
+                  Connect With Me
+                </h3>
+                
+                <div className="space-y-4">
+                  {socialLinks.map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-3 text-muted-foreground ${link.color} transition-smooth group`}
+                    >
+                      <div className="bg-accent/10 p-2 rounded-lg group-hover:bg-accent/20 transition-smooth">
+                        <link.icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-medium">{link.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="gradient-card rounded-2xl p-6 shadow-elegant">
+                <div className="flex items-start gap-3 text-muted-foreground">
+                  <div className="bg-accent/10 p-2 rounded-lg">
+                    <MapPin className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
+                    <p>Gainesville, FL</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Contact Form */}
             <div className="lg:col-span-3 gradient-card rounded-2xl p-8 shadow-elegant">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -118,44 +156,6 @@ const Contact = () => {
                   <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Connect With Me
-                </h3>
-                
-                <div className="space-y-4">
-                  {socialLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-3 text-muted-foreground ${link.color} transition-smooth group`}
-                    >
-                      <div className="bg-accent/10 p-2 rounded-lg group-hover:bg-accent/20 transition-smooth">
-                        <link.icon className="h-5 w-5" />
-                      </div>
-                      <span className="font-medium">{link.name}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <div className="flex items-start gap-3 text-muted-foreground">
-                  <div className="bg-accent/10 p-2 rounded-lg">
-                    <MapPin className="h-5 w-5 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
-                    <p>Gainesville, FL</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
