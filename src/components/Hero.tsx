@@ -53,9 +53,9 @@ const Hero = () => {
               size="lg"
               variant="outline"
               className="border-2 border-primary-foreground bg-primary-foreground text-primary hover:bg-transparent hover:text-primary-foreground transition-smooth"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => window.open("/TIKAHARU_SHARMA_RESUME.pdf", "_blank")}
             >
-              Contact Me
+              Resume
               <Download className="ml-2 h-5 w-5" />
             </Button>
           </div>
