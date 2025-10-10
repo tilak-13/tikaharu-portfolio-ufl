@@ -70,7 +70,11 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
+                className={`text-sm font-medium transition-colors relative group ${
+                  isScrolled 
+                    ? "text-foreground hover:text-accent" 
+                    : "text-white hover:text-accent"
+                }`}
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
@@ -82,7 +86,11 @@ const Navbar = () => {
               variant="outline"
               size="icon"
               onClick={toggleTheme}
-              className="rounded-full border-2 border-white/20 bg-transparent hover:bg-white/10 text-white transition-smooth"
+              className={`rounded-full border-2 transition-smooth ${
+                isScrolled
+                  ? "border-border bg-transparent hover:bg-accent/10 text-foreground"
+                  : "border-white/20 bg-transparent hover:bg-white/10 text-white"
+              }`}
             >
               {theme === "light" ? (
                 <Moon className="h-5 w-5" />
@@ -94,7 +102,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className={`md:hidden transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,7 +119,11 @@ const Navbar = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-sm font-medium text-white hover:text-accent transition-colors text-left"
+                  className={`text-sm font-medium transition-colors text-left ${
+                    isScrolled 
+                      ? "text-foreground hover:text-accent" 
+                      : "text-white hover:text-accent"
+                  }`}
                 >
                   {link.name}
                 </button>
@@ -120,7 +134,11 @@ const Navbar = () => {
                 variant="outline"
                 size="icon"
                 onClick={toggleTheme}
-                className="rounded-full border-2 border-white/20 bg-transparent hover:bg-white/10 text-white transition-smooth w-fit"
+                className={`rounded-full border-2 transition-smooth w-fit ${
+                  isScrolled
+                    ? "border-border bg-transparent hover:bg-accent/10 text-foreground"
+                    : "border-white/20 bg-transparent hover:bg-white/10 text-white"
+                }`}
               >
                 {theme === "light" ? (
                   <Moon className="h-5 w-5" />
