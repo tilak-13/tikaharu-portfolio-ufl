@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Github, Linkedin, MapPin, Send } from "lucide-react";
+import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -60,13 +60,13 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2">
               <div className="gradient-card rounded-2xl p-6 shadow-elegant">
                 <h3 className="text-xl font-semibold text-foreground mb-4">
                   Connect With Me
                 </h3>
                 
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {socialLinks.map((link, index) => (
                     <a
                       key={index}
@@ -81,18 +81,6 @@ const Contact = () => {
                       <span className="font-medium">{link.name}</span>
                     </a>
                   ))}
-                </div>
-              </div>
-
-              <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <div className="flex items-start gap-3 text-muted-foreground">
-                  <div className="bg-accent/10 p-2 rounded-lg">
-                    <MapPin className="h-5 w-5 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
-                    <p>Gainesville, FL</p>
-                  </div>
                 </div>
               </div>
             </div>
