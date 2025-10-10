@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
+import profilePicture from "@/assets/profile-picture.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -8,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
@@ -20,10 +21,12 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}
           <div className="mb-8 animate-slide-up">
-            <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-accent to-primary p-1 shadow-elegant">
-              <div className="w-full h-full rounded-full bg-background flex items-center justify-center text-6xl font-bold text-primary">
-                TS
-              </div>
+            <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-accent to-primary p-1.5 shadow-elegant">
+              <img 
+                src={profilePicture} 
+                alt="Tikaharu Sharma - Software Engineer" 
+                className="w-full h-full rounded-full object-cover"
+              />
             </div>
           </div>
 

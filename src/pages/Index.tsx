@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -10,6 +11,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <Navbar />
       <ThemeToggle />
       <Hero />
       <About />
