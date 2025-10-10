@@ -33,19 +33,19 @@ const Contact = () => {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/tikaharu-sharma-9a518023b/",
       color: "hover:text-blue-600"
     },
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com",
+      url: "https://github.com/tilak-13",
       color: "hover:text-gray-800 dark:hover:text-gray-300"
     },
     {
       name: "Email",
       icon: Mail,
-      url: "mailto:tikaharu@example.com",
+      url: "mailto:tgaire13@gmail.com",
       color: "hover:text-accent"
     }
   ];
