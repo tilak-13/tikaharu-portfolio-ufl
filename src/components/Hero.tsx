@@ -52,7 +52,7 @@ const Hero = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-smooth"
+              className="border-2 border-primary-foreground bg-primary-foreground text-primary hover:bg-transparent hover:text-primary-foreground transition-smooth"
               onClick={() => scrollToSection("contact")}
             >
               Contact Me
