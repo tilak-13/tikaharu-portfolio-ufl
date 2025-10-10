@@ -62,7 +62,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
+                <h3 className="text-xl font-semibold text-foreground mb-4 text-center">
                   Connect With Me
                 </h3>
                 
