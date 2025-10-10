@@ -3,7 +3,7 @@ import { Briefcase } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      title: "Full-Stack Developer",
+      title: "Software Developer",
       company: "Danphe Software Labs",
       period: "Jul 2024 - May 2025",
       description:
