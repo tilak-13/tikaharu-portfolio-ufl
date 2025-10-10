@@ -66,19 +66,19 @@ const Contact = () => {
                   Connect With Me
                 </h3>
                 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-4 md:gap-5">
                   {socialLinks.map((link, index) => (
                     <a
                       key={index}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-3 text-muted-foreground ${link.color} transition-smooth group`}
+                      className={`flex flex-col items-center gap-2 text-muted-foreground ${link.color} transition-smooth group`}
                     >
-                      <div className="bg-accent/10 p-2 rounded-lg group-hover:bg-accent/20 transition-smooth">
-                        <link.icon className="h-5 w-5" />
+                      <div className="bg-accent/10 p-3 rounded-lg group-hover:bg-accent/20 transition-smooth">
+                        <link.icon className="h-6 w-6 md:h-5 md:w-5" />
                       </div>
-                      <span className="font-medium">{link.name}</span>
+                      <span className="font-medium text-sm md:text-base">{link.name}</span>
                     </a>
                   ))}
                 </div>
