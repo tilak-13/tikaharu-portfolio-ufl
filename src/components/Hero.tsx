@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}
           <div className="mb-8 animate-slide-up">
-            <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-accent to-primary p-1.5 shadow-elegant">
+            <div className="w-60 h-60 mx-auto rounded-full border-4 border-accent shadow-elegant">
               <img 
                 src={profilePicture} 
                 alt="Tikaharu Sharma - Software Engineer" 

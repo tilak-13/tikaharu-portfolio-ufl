@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +14,22 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+    
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -41,7 +59,7 @@ const Navbar = () => {
           {/* Logo/Name */}
           <button
             onClick={() => scrollToSection("hero")}
-            className="text-xl font-bold text-primary hover:text-accent transition-colors"
+            className="text-xl font-bold text-accent hover:text-accent/80 transition-colors"
           >
             TS
           </button>
@@ -52,17 +70,31 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors relative group"
+                className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
+            
+            {/* Theme Toggle */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={toggleTheme}
+              className="rounded-full border-2 border-white/20 bg-transparent hover:bg-white/10 text-white transition-smooth"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -77,11 +109,25 @@ const Navbar = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-sm font-medium text-foreground hover:text-accent transition-colors text-left"
+                  className="text-sm font-medium text-white hover:text-accent transition-colors text-left"
                 >
                   {link.name}
                 </button>
               ))}
+              
+              {/* Mobile Theme Toggle */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                className="rounded-full border-2 border-white/20 bg-transparent hover:bg-white/10 text-white transition-smooth w-fit"
+              >
+                {theme === "light" ? (
+                  <Moon className="h-5 w-5" />
+                ) : (
+                  <Sun className="h-5 w-5" />
+                )}
+              </Button>
             </div>
           </div>
         )}
