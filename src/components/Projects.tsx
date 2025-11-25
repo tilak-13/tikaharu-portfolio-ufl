@@ -47,8 +47,12 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="gradient-card rounded-2xl overflow-hidden shadow-elegant hover:shadow-hover transition-smooth group hover:-translate-y-2 hover:backdrop-blur-xl"
-                style={{ transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}
+                className="gradient-card rounded-2xl overflow-hidden shadow-elegant hover:shadow-hover transition-smooth group hover:-translate-y-2 hover:backdrop-blur-xl opacity-0 animate-fade-in"
+                style={{ 
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  animationDelay: `${index * 0.15}s`,
+                  animationFillMode: 'forwards'
+                }}
               >
                 {/* Project header with gradient */}
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
