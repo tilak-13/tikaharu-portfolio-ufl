@@ -26,15 +26,15 @@ const About = () => {
     >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">About Me</h2>
 
           <div className="gradient-card rounded-2xl p-8 md:p-12 shadow-elegant mb-12">
-            <p className="text-lg leading-relaxed mb-6" style={{ color: 'hsl(210, 20%, 85%)' }}>
+            <p className="text-lg leading-relaxed mb-6 dark:text-[hsl(210,20%,85%)] text-muted-foreground">
               I'm a passionate Computer Engineer currently pursuing my Master's degree in Computer & Information Science
               at the University of Florida, where I'm deepening my expertise in Software Engineering and Machine
               Learning.
             </p>
-            <p className="text-lg leading-relaxed" style={{ color: 'hsl(210, 20%, 85%)' }}>
+            <p className="text-lg leading-relaxed dark:text-[hsl(210,20%,85%)] text-muted-foreground">
               With a strong foundation in full-stack development and machine learning, I love building scalable web
               applications and intelligent systems that solve real-world problems. My journey has been driven by
               curiosity and a desire to create technology that makes a meaningful impact.
@@ -42,7 +42,7 @@ const About = () => {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white flex items-center gap-3 mb-8">
+            <h3 className="text-2xl font-semibold flex items-center gap-3 mb-8">
               <GraduationCap className="h-8 w-8 text-accent" />
               Education
             </h3>
@@ -53,9 +53,9 @@ const About = () => {
                   <div className="absolute -left-[33px] w-4 h-4 rounded-full bg-accent border-4 border-transparent"></div>
 
                   <div className="gradient-card rounded-xl p-6 shadow-elegant hover:shadow-hover transition-smooth">
-                    <h4 className="text-xl font-semibold text-white mb-2">{edu.degree}</h4>
+                    <h4 className="text-xl font-semibold mb-2">{edu.degree}</h4>
                     <p className="text-accent font-medium mb-1">{edu.institution}</p>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm" style={{ color: 'hsl(210, 20%, 85%)' }}>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm dark:text-[hsl(210,20%,85%)] text-muted-foreground">
                       <span>{edu.period}</span>
                       <span className="hidden sm:inline">•</span>
                       <span>{edu.location}</span>

@@ -34,7 +34,7 @@ const Skills = () => {
     >
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Skills & Technologies</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Skills & Technologies</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {skillCategories.map((category, index) => (
@@ -46,7 +46,7 @@ const Skills = () => {
                   <category.icon className="h-7 w-7 text-accent" />
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-4">{category.title}</h3>
+                <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
 
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (

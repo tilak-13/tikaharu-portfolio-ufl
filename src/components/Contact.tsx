@@ -60,7 +60,7 @@ const Contact = () => {
     >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             Get In Touch
           </h2>
 
@@ -68,7 +68,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <h3 className="text-xl font-semibold text-white mb-4 text-center">
+                <h3 className="text-xl font-semibold mb-4 text-center">
                   Connect With Me
                 </h3>
                 
@@ -79,8 +79,7 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-2 ${link.color} transition-smooth group`}
-                      style={{ color: 'hsl(210, 20%, 85%)' }}
+                      className={`flex flex-col items-center gap-2 ${link.color} transition-smooth group dark:text-[hsl(210,20%,85%)] text-muted-foreground`}
                     >
                       <div className="bg-accent/10 p-3 rounded-lg group-hover:bg-accent/20 transition-smooth">
                         <link.icon className="h-6 w-6 md:h-5 md:w-5" />
