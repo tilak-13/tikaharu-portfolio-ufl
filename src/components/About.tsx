@@ -1,6 +1,8 @@
 import { GraduationCap } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const About = () => {
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const education = [
     {
       degree: "M.S. in Computer & Information Science",
@@ -17,7 +19,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6">
+    <section 
+      id="about" 
+      ref={ref}
+      className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">About Me</h2>

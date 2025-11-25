@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Github, Linkedin, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -51,7 +53,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6">
+    <section 
+      id="contact" 
+      ref={ref}
+      className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
