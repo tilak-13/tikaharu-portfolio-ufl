@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 210 17% 98%;
+    --background: 0 0% 100%;
     --foreground: 210 60% 11%;
 
     --card: 0 0% 100%;
@@ -24,7 +24,7 @@ All colors MUST be HSL.
     --secondary-foreground: 210 60% 11%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 210 25% 45%;
+    --muted-foreground: 0 0% 29%;
 
     --accent: 0 100% 70%;
     --accent-foreground: 0 0% 100%;
@@ -38,8 +38,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(210, 60%, 11%) 0%, hsl(210, 50%, 20%) 50%, hsl(0, 100%, 70%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(210, 60%, 98%) 0%, hsl(210, 40%, 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 100%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(210, 40%, 96%) 100%);
     --shadow-elegant: 0 10px 40px -10px hsl(210 60% 11% / 0.1);
     --shadow-hover: 0 20px 50px -10px hsl(210 60% 11% / 0.15);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,6 +95,12 @@ All colors MUST be HSL.
     background: var(--gradient-hero);
     background-attachment: fixed;
     color: hsl(210, 17%, 98%);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  body:not(.dark) {
+    background: hsl(0, 0%, 100%);
+    color: hsl(210, 60%, 11%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -102,8 +108,21 @@ All colors MUST be HSL.
     color: hsl(0, 0%, 100%);
   }
   
+  :not(.dark) h1, 
+  :not(.dark) h2, 
+  :not(.dark) h3, 
+  :not(.dark) h4, 
+  :not(.dark) h5, 
+  :not(.dark) h6 {
+    color: hsl(210, 60%, 11%);
+  }
+  
   p {
     color: hsl(210, 20%, 85%);
+  }
+  
+  :not(.dark) p {
+    color: hsl(0, 0%, 29%);
   }
 
   .gradient-hero {
@@ -114,6 +133,14 @@ All colors MUST be HSL.
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  :not(.dark) .gradient-card {
+    background: hsl(210, 40%, 98%);
+    backdrop-filter: none;
+    border: 1px solid hsl(210, 30%, 90%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
   }
 
   .shadow-elegant {

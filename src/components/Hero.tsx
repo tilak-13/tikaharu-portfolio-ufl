@@ -9,9 +9,9 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden dark:gradient-hero bg-white">
       {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 dark:block hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: "2s" }}></div>
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: "4s" }}></div>
@@ -31,11 +31,11 @@ const Hero = () => {
           </div>
 
           {/* Hero Text */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in dark:text-primary-foreground text-foreground">
             Hi, I'm <span className="text-accent">Tikaharu Sharma</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-12 animate-fade-in font-light" style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl md:text-2xl mb-12 animate-fade-in font-light dark:text-primary-foreground/90 text-muted-foreground" style={{ animationDelay: "0.2s" }}>
             Software Engineer & Machine Learning Enthusiast
           </p>
 
@@ -52,7 +52,7 @@ const Hero = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-primary-foreground bg-primary-foreground text-primary hover:bg-transparent hover:text-primary-foreground transition-smooth"
+              className="border-2 bg-primary-foreground text-primary hover:bg-transparent transition-smooth dark:border-primary-foreground dark:hover:text-primary-foreground border-primary hover:text-primary-foreground hover:bg-primary"
               onClick={() => window.open("/TIKAHARU_SHARMA_RESUME.pdf", "_blank")}
             >
               Resume
@@ -64,8 +64,8 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full mt-2"></div>
+        <div className="w-6 h-10 border-2 rounded-full flex justify-center dark:border-primary-foreground/50 border-primary/50">
+          <div className="w-1.5 h-3 rounded-full mt-2 dark:bg-primary-foreground/50 bg-primary/50"></div>
         </div>
       </div>
     </section>

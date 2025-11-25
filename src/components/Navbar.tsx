@@ -60,6 +60,7 @@ const Navbar = () => {
           <button
             onClick={() => scrollToSection("hero")}
             className="text-xl font-bold text-accent hover:text-accent/80 transition-colors"
+            style={{ color: 'hsl(0, 100%, 70%)' }}
           >
             TS
           </button>
@@ -92,10 +93,10 @@ const Navbar = () => {
                   : "border-white/20 bg-transparent hover:bg-white/10 text-white"
               }`}
             >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
+              {theme === "dark" ? (
                 <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
               )}
             </Button>
           </div>
@@ -140,10 +141,10 @@ const Navbar = () => {
                     : "border-white/20 bg-transparent hover:bg-white/10 text-white"
                 }`}
               >
-                {theme === "light" ? (
-                  <Moon className="h-5 w-5" />
-                ) : (
+                {theme === "dark" ? (
                   <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
                 )}
               </Button>
             </div>

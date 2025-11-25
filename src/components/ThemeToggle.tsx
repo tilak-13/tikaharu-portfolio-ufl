@@ -28,10 +28,10 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="fixed top-6 right-6 z-50 rounded-full border-2 shadow-elegant hover:shadow-hover transition-smooth"
     >
-      {theme === "light" ? (
-        <Moon className="h-5 w-5 text-foreground" />
-      ) : (
+      {theme === "dark" ? (
         <Sun className="h-5 w-5 text-foreground" />
+      ) : (
+        <Moon className="h-5 w-5 text-foreground" />
       )}
     </Button>
   );
