@@ -1,8 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import profilePicture from "@/assets/profile-picture.jpg";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -10,11 +22,20 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background elements with parallax */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: "4s" }}></div>
+        <div 
+          className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+        <div 
+          className="absolute top-40 right-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-float" 
+          style={{ animationDelay: "2s", transform: `translateY(${scrollY * 0.5}px)` }}
+        ></div>
+        <div 
+          className="absolute bottom-20 left-1/3 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-float" 
+          style={{ animationDelay: "4s", transform: `translateY(${scrollY * 0.2}px)` }}
+        ></div>
       </div>
 
       <div className="container mx-auto px-6 z-10">
