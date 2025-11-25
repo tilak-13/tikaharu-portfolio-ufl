@@ -42,7 +42,7 @@ const Contact = () => {
       name: "GitHub",
       icon: Github,
       url: "https://github.com/tilak-13",
-      color: "hover:text-gray-800 dark:hover:text-gray-300"
+      color: "hover:text-gray-300"
     },
     {
       name: "Email",
@@ -106,7 +106,7 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
+                    className="bg-white/5 border-white/20 text-foreground placeholder:text-white/50 focus:ring-accent"
                     placeholder="Your name"
                   />
                 </div>
@@ -122,7 +122,7 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
+                    className="bg-white/5 border-white/20 text-foreground placeholder:text-white/50 focus:ring-accent"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -138,7 +138,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent resize-none"
+                    className="bg-white/5 border-white/20 text-foreground placeholder:text-white/50 focus:ring-accent resize-none"
                     placeholder="Your message..."
                   />
                 </div>
