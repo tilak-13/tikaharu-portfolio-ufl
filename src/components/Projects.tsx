@@ -1,7 +1,9 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const Projects = () => {
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const projects = [
     {
       title: "Hire Nepal",
@@ -30,7 +32,11 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6">
+    <section 
+      id="projects" 
+      ref={ref}
+      className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">

@@ -1,6 +1,8 @@
 import { Briefcase } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const Experience = () => {
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
   const experiences = [
     {
       title: "Software Developer",
@@ -19,7 +21,11 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6">
+    <section 
+      id="experience" 
+      ref={ref}
+      className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Experience</h2>
