@@ -95,7 +95,7 @@ const Contact = () => {
             <div className="lg:col-span-3 gradient-card rounded-2xl p-8 shadow-elegant">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name
                   </label>
                   <Input
@@ -105,13 +105,13 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
+                    className="dark:bg-white/5 bg-background dark:border-white/20 border-border dark:text-white text-foreground dark:placeholder:text-white/50 placeholder:text-muted-foreground focus:ring-accent"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email
                   </label>
                   <Input
@@ -121,13 +121,13 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
+                    className="dark:bg-white/5 bg-background dark:border-white/20 border-border dark:text-white text-foreground dark:placeholder:text-white/50 placeholder:text-muted-foreground focus:ring-accent"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
                   </label>
                   <Textarea
@@ -137,7 +137,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent resize-none"
+                    className="dark:bg-white/5 bg-background dark:border-white/20 border-border dark:text-white text-foreground dark:placeholder:text-white/50 placeholder:text-muted-foreground focus:ring-accent resize-none"
                     placeholder="Your message..."
                   />
                 </div>
