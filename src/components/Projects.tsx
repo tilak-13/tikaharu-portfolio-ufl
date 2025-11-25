@@ -1,9 +1,33 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useState } from "react";
 
 const Projects = () => {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+    
+    setHoveredCard(index);
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+    setTilt({ x: 0, y: 0 });
+  };
   const projects = [
     {
       title: "Hire Nepal",
@@ -51,8 +75,14 @@ const Projects = () => {
                 style={{ 
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   animationDelay: `${index * 0.15}s`,
-                  animationFillMode: 'forwards'
+                  animationFillMode: 'forwards',
+                  transform: hoveredCard === index 
+                    ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-8px) scale(1.02)` 
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)',
+                  transformStyle: 'preserve-3d'
                 }}
+                onMouseMove={(e) => handleMouseMove(e, index)}
+                onMouseLeave={handleMouseLeave}
               >
                 {/* Project header with gradient */}
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
