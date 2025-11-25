@@ -51,10 +51,10 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 bg-background">
+    <section id="contact" className="py-20 px-6">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
             Get In Touch
           </h2>
 
@@ -62,7 +62,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <h3 className="text-xl font-semibold text-foreground mb-4 text-center">
+                <h3 className="text-xl font-semibold text-white mb-4 text-center">
                   Connect With Me
                 </h3>
                 
@@ -73,7 +73,8 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-2 text-muted-foreground ${link.color} transition-smooth group`}
+                      className={`flex flex-col items-center gap-2 ${link.color} transition-smooth group`}
+                      style={{ color: 'hsl(210, 20%, 85%)' }}
                     >
                       <div className="bg-accent/10 p-3 rounded-lg group-hover:bg-accent/20 transition-smooth">
                         <link.icon className="h-6 w-6 md:h-5 md:w-5" />
@@ -89,7 +90,7 @@ const Contact = () => {
             <div className="lg:col-span-3 gradient-card rounded-2xl p-8 shadow-elegant">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                     Name
                   </label>
                   <Input
@@ -99,13 +100,13 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="bg-background border-border focus:ring-accent"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
                     Email
                   </label>
                   <Input
@@ -115,13 +116,13 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="bg-background border-border focus:ring-accent"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
                     Message
                   </label>
                   <Textarea
@@ -131,7 +132,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="bg-background border-border focus:ring-accent resize-none"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:ring-accent resize-none"
                     placeholder="Your message..."
                   />
                 </div>
