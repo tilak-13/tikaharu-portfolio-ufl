@@ -31,11 +31,11 @@ const Hero = () => {
           </div>
 
           {/* Hero Text */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
             Hi, I'm <span className="text-accent">Tikaharu Sharma</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-12 animate-fade-in font-light" style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl md:text-2xl text-white mb-12 animate-fade-in font-light" style={{ animationDelay: "0.2s" }}>
             Software Engineer & Machine Learning Enthusiast
           </p>
 
