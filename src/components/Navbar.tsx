@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,22 +12,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
-    
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -80,24 +62,6 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
-            
-            {/* Theme Toggle */}
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-              className={`rounded-full border-2 transition-smooth ${
-                isScrolled
-                  ? "border-border bg-transparent hover:bg-accent/10 text-foreground"
-                  : "border-white/20 bg-transparent hover:bg-white/10 text-white"
-              }`}
-            >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
-                <Sun className="h-5 w-5" />
-              )}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,24 +92,6 @@ const Navbar = () => {
                   {link.name}
                 </button>
               ))}
-              
-              {/* Mobile Theme Toggle */}
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={toggleTheme}
-                className={`rounded-full border-2 transition-smooth w-fit ${
-                  isScrolled
-                    ? "border-border bg-transparent hover:bg-accent/10 text-foreground"
-                    : "border-white/20 bg-transparent hover:bg-white/10 text-white"
-                }`}
-              >
-                {theme === "light" ? (
-                  <Moon className="h-5 w-5" />
-                ) : (
-                  <Sun className="h-5 w-5" />
-                )}
-              </Button>
             </div>
           </div>
         )}
