@@ -19,10 +19,10 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 bg-muted/30">
+    <section id="experience" className="py-20 px-6">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Experience</h2>
 
           <div className="space-y-6">
             {experiences.map((exp, index) => (
@@ -36,13 +36,13 @@ const Experience = () => {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-foreground mb-2">{exp.title}</h3>
+                    <h3 className="text-2xl font-semibold text-white mb-2">{exp.title}</h3>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
                       <span className="text-accent font-medium">{exp.company}</span>
-                      <span className="hidden sm:inline text-muted-foreground">•</span>
-                      <span className="text-muted-foreground">{exp.period}</span>
+                      <span className="hidden sm:inline" style={{ color: 'hsl(210, 20%, 85%)' }}>•</span>
+                      <span style={{ color: 'hsl(210, 20%, 85%)' }}>{exp.period}</span>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
+                    <p className="leading-relaxed" style={{ color: 'hsl(210, 20%, 85%)' }}>{exp.description}</p>
                   </div>
                 </div>
               </div>

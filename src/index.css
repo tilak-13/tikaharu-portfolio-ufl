@@ -91,11 +91,19 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-['Poppins',sans-serif];
+    @apply font-['Poppins',sans-serif];
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+    color: hsl(210, 17%, 98%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
+    color: hsl(0, 0%, 100%);
+  }
+  
+  p {
+    color: hsl(210, 20%, 85%);
   }
 
   .gradient-hero {
@@ -103,7 +111,9 @@ All colors MUST be HSL.
   }
 
   .gradient-card {
-    background: var(--gradient-card);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .shadow-elegant {

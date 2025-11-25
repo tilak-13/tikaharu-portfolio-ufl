@@ -30,10 +30,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6 bg-muted/30">
+    <section id="projects" className="py-20 px-6">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
             Featured Projects
           </h2>
 
@@ -47,11 +47,11 @@ const Projects = () => {
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
                 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-foreground mb-4 group-hover:text-accent transition-smooth">
+                  <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-accent transition-smooth">
                     {project.title}
                   </h3>
                   
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="leading-relaxed mb-6" style={{ color: 'hsl(210, 20%, 85%)' }}>
                     {project.description}
                   </p>
 
