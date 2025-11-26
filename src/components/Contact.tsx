@@ -36,31 +36,36 @@ const Contact = () => {
       name: "LinkedIn",
       icon: Linkedin,
       url: "https://www.linkedin.com/in/tikaharu-sharma-9a518023b/",
-      color: "hover:text-blue-600"
+      bgColor: "bg-[#0A66C2]",
+      hoverBg: "hover:bg-[#004182]"
     },
     {
       name: "GitHub",
       icon: Github,
       url: "https://github.com/tilak-13",
-      color: "hover:text-gray-300"
+      bgColor: "bg-[#333333]",
+      hoverBg: "hover:bg-[#24292e]"
     },
     {
       name: "Facebook",
       icon: Facebook,
       url: "https://www.facebook.com/",
-      color: "hover:text-blue-600"
+      bgColor: "bg-[#1877F2]",
+      hoverBg: "hover:bg-[#0C63D4]"
     },
     {
       name: "Instagram",
       icon: Instagram,
       url: "https://www.instagram.com/",
-      color: "hover:text-pink-600"
+      bgColor: "bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F56040]",
+      hoverBg: "hover:scale-110"
     },
     {
       name: "Email",
       icon: Mail,
       url: "mailto:tgaire13@gmail.com",
-      color: "hover:text-accent"
+      bgColor: "bg-accent",
+      hoverBg: "hover:bg-accent/80"
     }
   ];
 
@@ -91,13 +96,12 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-2 ${link.color} transition-smooth group`}
-                      style={{ color: 'hsl(210, 20%, 85%)' }}
+                      className="flex flex-col items-center gap-2 transition-smooth group"
                     >
-                      <div className="bg-accent/10 p-3 rounded-lg group-hover:bg-accent/20 transition-smooth">
-                        <link.icon className="h-6 w-6 md:h-5 md:w-5" />
+                      <div className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
+                        <link.icon className="h-6 w-6 md:h-5 md:w-5 text-white" />
                       </div>
-                      <span className="font-medium text-sm md:text-base">{link.name}</span>
+                      <span className="font-medium text-sm md:text-base text-white">{link.name}</span>
                     </a>
                   ))}
                 </div>
