@@ -2,6 +2,9 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState } from "react";
+import hireNepalImg from "@/assets/hire-nepal.jpg";
+import fashionRecommenderImg from "@/assets/fashion-recommender.jpg";
+import algorithmVisualizerImg from "@/assets/algorithm-visualizer.jpg";
 
 const Projects = () => {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
@@ -33,25 +36,29 @@ const Projects = () => {
       title: "Hire Nepal",
       description: "ML-powered job portal featuring intelligent resume analysis and personalized job recommendations. Built with advanced machine learning algorithms to match candidates with ideal opportunities.",
       tags: ["Machine Learning", "Python", "NLP", "ReactJS"],
-      gradient: "from-blue-500 to-purple-600"
+      gradient: "from-blue-500 to-purple-600",
+      image: hireNepalImg
     },
     {
       title: "Fashion Recommender System",
       description: "Sophisticated recommendation engine that suggests visually similar fashion products using ML-based image similarity and deep learning techniques for accurate matching.",
       tags: ["Deep Learning", "Computer Vision", "Python", "TensorFlow"],
-      gradient: "from-pink-500 to-rose-600"
+      gradient: "from-pink-500 to-rose-600",
+      image: fashionRecommenderImg
     },
     {
       title: "Sorting Algorithm Visualizer",
       description: "Interactive educational tool built with ReactJS that brings sorting algorithms to life through real-time visualization, helping users understand complex algorithmic concepts.",
       tags: ["ReactJS", "JavaScript", "Algorithms", "Data Structures"],
-      gradient: "from-green-500 to-teal-600"
+      gradient: "from-green-500 to-teal-600",
+      image: algorithmVisualizerImg
     },
     {
       title: "N-Queen Visualizer",
       description: "Elegant visualization of the classic N-Queen problem using backtracking algorithms. Built with ReactJS to demonstrate algorithmic problem-solving in an intuitive way.",
       tags: ["ReactJS", "Algorithms", "Backtracking", "JavaScript"],
-      gradient: "from-orange-500 to-amber-600"
+      gradient: "from-orange-500 to-amber-600",
+      image: algorithmVisualizerImg
     }
   ];
 
@@ -86,6 +93,15 @@ const Projects = () => {
               >
                 {/* Project header with gradient */}
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+                
+                {/* Project image */}
+                <div className="overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
                 
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-accent transition-smooth">
