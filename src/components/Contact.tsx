@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Github, Linkedin, MapPin, Send } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Send, Facebook, Instagram } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
@@ -43,6 +43,18 @@ const Contact = () => {
       icon: Github,
       url: "https://github.com/tilak-13",
       color: "hover:text-gray-300"
+    },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      url: "https://www.facebook.com/",
+      color: "hover:text-blue-600"
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: "https://www.instagram.com/",
+      color: "hover:text-pink-600"
     },
     {
       name: "Email",
