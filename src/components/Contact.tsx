@@ -96,9 +96,14 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center gap-2 transition-smooth group"
+                      className="flex flex-col items-center gap-2 transition-smooth group animate-fade-in"
+                      style={{
+                        animationDelay: `${index * 0.1}s`,
+                        animationFillMode: 'forwards',
+                        opacity: 0
+                      }}
                     >
-                      <div className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
+                      <div className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:animate-bounce`}>
                         <link.icon className="h-6 w-6 md:h-5 md:w-5 text-white" />
                       </div>
                       <span className="font-medium text-sm md:text-base text-white">{link.name}</span>
