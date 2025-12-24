@@ -59,8 +59,8 @@ const About = () => {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Image Carousel */}
-            <div className="relative group">
-              <div className="gradient-card rounded-3xl p-4 shadow-elegant">
+            <div className="relative group flex justify-center">
+              <div className="gradient-card rounded-3xl p-3 md:p-4 shadow-elegant w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-none">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                   {galleryImages.map((image, index) => (
                     <img
