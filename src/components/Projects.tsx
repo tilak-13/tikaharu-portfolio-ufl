@@ -2,7 +2,7 @@ import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState, useEffect } from "react";
-import hireNepalImg from "@/assets/hire-nepal.jpg";
+import hireNepalImg from "@/assets/hire-nepal.png";
 import fashionRecommenderImg from "@/assets/fashion-recommender.png";
 import sortingVisualizerImg from "@/assets/sorting-visualizer.png";
 import nqueenVisualizerImg from "@/assets/nqueen-visualizer.png";
