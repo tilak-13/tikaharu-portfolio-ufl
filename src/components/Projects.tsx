@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import hireNepalImg from "@/assets/hire-nepal.jpg";
 import fashionRecommenderImg from "@/assets/fashion-recommender.jpg";
 import algorithmVisualizerImg from "@/assets/algorithm-visualizer.jpg";
+import duelGameImg from "@/assets/duel-game.png";
 
 const Projects = () => {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
@@ -39,6 +40,13 @@ const Projects = () => {
       tags: ["ReactJS", "Algorithms", "Backtracking", "JavaScript"],
       gradient: "from-orange-500 to-amber-600",
       image: algorithmVisualizerImg
+    },
+    {
+      title: "Duel Game Battle",
+      description: "Duel Game Package is a multiplayer game where 2 players battle against each other in three rounds with different games and try to outscore their opponents. The player with most game wins will be the winner of the series.",
+      tags: ["C++", "SFML", "Game Development", "Multiplayer"],
+      gradient: "from-red-500 to-emerald-600",
+      image: duelGameImg
     }
   ];
 
