@@ -19,35 +19,45 @@ const Projects = () => {
       description: "ML-powered job portal featuring intelligent resume analysis and personalized job recommendations. Built with advanced machine learning algorithms to match candidates with ideal opportunities.",
       tags: ["Machine Learning", "Python", "NLP", "ReactJS"],
       gradient: "from-blue-500 to-purple-600",
-      image: hireNepalImg
+      image: hireNepalImg,
+      codeUrl: "https://github.com/tilak-13/Hire-Nepal---Frontend",
+      demoUrl: null
     },
     {
       title: "Fashion Recommender System",
       description: "Sophisticated recommendation engine that suggests visually similar fashion products using ML-based image similarity and deep learning techniques for accurate matching.",
       tags: ["Deep Learning", "Computer Vision", "Python", "TensorFlow"],
       gradient: "from-pink-500 to-rose-600",
-      image: fashionRecommenderImg
+      image: fashionRecommenderImg,
+      codeUrl: "https://github.com/tilak-13/Visual-Based-Product-Recommender",
+      demoUrl: null
     },
     {
       title: "Sorting Algorithm Visualizer",
       description: "Interactive educational tool built with ReactJS that brings sorting algorithms to life through real-time visualization, helping users understand complex algorithmic concepts.",
       tags: ["ReactJS", "JavaScript", "Algorithms", "Data Structures"],
       gradient: "from-green-500 to-teal-600",
-      image: sortingVisualizerImg
+      image: sortingVisualizerImg,
+      codeUrl: "https://github.com/tilak-13/Sorting-Visualizer",
+      demoUrl: "https://sortvisualizzer.netlify.app"
     },
     {
       title: "N-Queen Visualizer",
       description: "Elegant visualization of the classic N-Queen problem using backtracking algorithms. Built with ReactJS to demonstrate algorithmic problem-solving in an intuitive way.",
       tags: ["ReactJS", "Algorithms", "Backtracking", "JavaScript"],
       gradient: "from-orange-500 to-amber-600",
-      image: nqueenVisualizerImg
+      image: nqueenVisualizerImg,
+      codeUrl: "https://github.com/tilak-13/N-Queen-Visualizer",
+      demoUrl: "https://nqueen-visualizer.netlify.app/"
     },
     {
       title: "Duel Game Battle",
       description: "Duel Game Package is a multiplayer game where 2 players battle against each other in three rounds with different games and try to outscore their opponents. The player with most game wins will be the winner of the series.",
       tags: ["C++", "SFML", "Game Development", "Multiplayer"],
       gradient: "from-red-500 to-emerald-600",
-      image: duelGameImg
+      image: duelGameImg,
+      codeUrl: "https://github.com/tilak-13/Duel-Battle-Game",
+      demoUrl: null
     }
   ];
 
@@ -207,18 +217,28 @@ const Projects = () => {
                           variant="outline"
                           size="sm"
                           className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.codeUrl, '_blank');
+                          }}
                         >
                           <Github className="mr-2 h-4 w-4" />
                           Code
                         </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth"
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo
-                        </Button>
+                        {project.demoUrl && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              window.open(project.demoUrl, '_blank');
+                            }}
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Demo
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
