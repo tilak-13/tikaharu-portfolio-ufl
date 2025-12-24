@@ -4,7 +4,8 @@ import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState, useEffect } from "react";
 import hireNepalImg from "@/assets/hire-nepal.jpg";
 import fashionRecommenderImg from "@/assets/fashion-recommender.png";
-import algorithmVisualizerImg from "@/assets/algorithm-visualizer.jpg";
+import sortingVisualizerImg from "@/assets/sorting-visualizer.png";
+import nqueenVisualizerImg from "@/assets/nqueen-visualizer.png";
 import duelGameImg from "@/assets/duel-game.png";
 
 const Projects = () => {
@@ -32,14 +33,14 @@ const Projects = () => {
       description: "Interactive educational tool built with ReactJS that brings sorting algorithms to life through real-time visualization, helping users understand complex algorithmic concepts.",
       tags: ["ReactJS", "JavaScript", "Algorithms", "Data Structures"],
       gradient: "from-green-500 to-teal-600",
-      image: algorithmVisualizerImg
+      image: sortingVisualizerImg
     },
     {
       title: "N-Queen Visualizer",
       description: "Elegant visualization of the classic N-Queen problem using backtracking algorithms. Built with ReactJS to demonstrate algorithmic problem-solving in an intuitive way.",
       tags: ["ReactJS", "Algorithms", "Backtracking", "JavaScript"],
       gradient: "from-orange-500 to-amber-600",
-      image: algorithmVisualizerImg
+      image: nqueenVisualizerImg
     },
     {
       title: "Duel Game Battle",
