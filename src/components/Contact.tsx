@@ -12,7 +12,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,7 +27,7 @@ const Contact = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -37,58 +37,50 @@ const Contact = () => {
       icon: Linkedin,
       url: "https://www.linkedin.com/in/tikaharu-sharma-9a518023b/",
       bgColor: "bg-[#0A66C2]",
-      hoverBg: "hover:bg-[#004182]"
+      hoverBg: "hover:bg-[#004182]",
     },
     {
       name: "GitHub",
       icon: Github,
       url: "https://github.com/tilak-13",
       bgColor: "bg-[#333333]",
-      hoverBg: "hover:bg-[#24292e]"
+      hoverBg: "hover:bg-[#24292e]",
     },
     {
       name: "Facebook",
       icon: Facebook,
-      url: "https://www.facebook.com/",
+      url: "https://www.facebook.com/tikaharu.sharma",
       bgColor: "bg-[#1877F2]",
-      hoverBg: "hover:bg-[#0C63D4]"
+      hoverBg: "hover:bg-[#0C63D4]",
     },
     {
       name: "Instagram",
       icon: Instagram,
-      url: "https://www.instagram.com/",
+      url: "https://www.instagram.com/t_haruu13/",
       bgColor: "bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F56040]",
-      hoverBg: "hover:scale-110"
+      hoverBg: "hover:scale-110",
     },
     {
       name: "Email",
       icon: Mail,
       url: "mailto:tgaire13@gmail.com",
       bgColor: "bg-accent",
-      hoverBg: "hover:bg-accent/80"
-    }
+      hoverBg: "hover:bg-accent/80",
+    },
   ];
 
   return (
-    <section 
-      id="contact" 
-      ref={ref}
-      className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
-    >
+    <section id="contact" ref={ref} className={`py-20 px-6 fade-in-section ${isVisible ? "is-visible" : ""}`}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
-            Get In Touch
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Get In Touch</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <div className="gradient-card rounded-2xl p-6 shadow-elegant">
-                <h3 className="text-xl font-semibold text-white mb-4 text-center">
-                  Connect With Me
-                </h3>
-                
+                <h3 className="text-xl font-semibold text-white mb-4 text-center">Connect With Me</h3>
+
                 <div className="flex flex-row flex-wrap justify-center items-center gap-4 md:gap-5">
                   {socialLinks.map((link, index) => (
                     <a
@@ -99,11 +91,13 @@ const Contact = () => {
                       className="flex flex-col items-center gap-2 transition-smooth group animate-fade-in"
                       style={{
                         animationDelay: `${index * 0.1}s`,
-                        animationFillMode: 'forwards',
-                        opacity: 0
+                        animationFillMode: "forwards",
+                        opacity: 0,
                       }}
                     >
-                      <div className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:animate-bounce`}>
+                      <div
+                        className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:animate-bounce`}
+                      >
                         <link.icon className="h-6 w-6 md:h-5 md:w-5 text-white" />
                       </div>
                       <span className="font-medium text-sm md:text-base text-white">{link.name}</span>
