@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState, useEffect } from "react";
 import hireNepalImg from "@/assets/hire-nepal.jpg";
-import fashionRecommenderImg from "@/assets/fashion-recommender.jpg";
+import fashionRecommenderImg from "@/assets/fashion-recommender.png";
 import algorithmVisualizerImg from "@/assets/algorithm-visualizer.jpg";
 import duelGameImg from "@/assets/duel-game.png";
 
