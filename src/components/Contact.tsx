@@ -88,14 +88,18 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center gap-2 transition-smooth group"
+                      className="flex flex-col items-center gap-2 group"
                     >
                       <div
-                        className={`${link.bgColor} ${link.hoverBg} p-3 rounded-lg transition-all duration-300 shadow-lg group-hover:shadow-xl`}
+                        className={`${link.bgColor} p-3 rounded-lg transition-all duration-300 shadow-lg 
+                          group-hover:shadow-xl group-hover:scale-110 group-hover:-translate-y-1 
+                          group-hover:rotate-3`}
                       >
-                        <link.icon className="h-6 w-6 md:h-5 md:w-5 text-white" />
+                        <link.icon className="h-6 w-6 md:h-5 md:w-5 text-white transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="font-medium text-sm md:text-base text-white">{link.name}</span>
+                      <span className="font-medium text-sm md:text-base text-white transition-all duration-300 group-hover:text-accent">
+                        {link.name}
+                      </span>
                     </a>
                   ))}
                 </div>
