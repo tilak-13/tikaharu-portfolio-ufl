@@ -8,7 +8,7 @@ const Skills = () => {
     {
       icon: Code2,
       title: "Programming Languages",
-      skills: ["Python", "JavaScript", "TypeScript", "C++"],
+      skills: ["Python", "JavaScript", "C", "C++"],
     },
     {
       icon: Globe,
@@ -18,12 +18,12 @@ const Skills = () => {
     {
       icon: Brain,
       title: "Machine Learning & AI",
-      skills: ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "Neural Networks", "Computer Vision"],
+      skills: ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "Neural Networks", "NLP"],
     },
     {
       icon: Wrench,
       title: "Tools & Technologies",
-      skills: ["Git", "Github", "MongoDB", "PostgreSQL", "AWS"],
+      skills: ["Git", "Github", "Docker", "SQL", "PostgreSQL", "AWS"],
     },
   ];
 
