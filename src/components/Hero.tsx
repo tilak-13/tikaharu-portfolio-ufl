@@ -65,9 +65,9 @@ const Hero = () => {
             <Button 
               size="lg"
               className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-elegant hover:shadow-hover transition-smooth group"
-              onClick={() => scrollToSection("projects")}
+              onClick={() => scrollToSection("contact")}
             >
-              View Projects
+              Get In Touch
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
