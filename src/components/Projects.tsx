@@ -1,36 +1,17 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import hireNepalImg from "@/assets/hire-nepal.jpg";
 import fashionRecommenderImg from "@/assets/fashion-recommender.jpg";
 import algorithmVisualizerImg from "@/assets/algorithm-visualizer.jpg";
 
 const Projects = () => {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-    
-    setHoveredCard(index);
-    setTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredCard(null);
-    setTilt({ x: 0, y: 0 });
-  };
   const projects = [
     {
       title: "Hire Nepal",
@@ -62,88 +43,146 @@ const Projects = () => {
     }
   ];
 
+  // Auto-advance carousel
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isPaused, projects.length]);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+
   return (
     <section 
       id="projects" 
       ref={ref}
       className={`py-20 px-6 fade-in-section ${isVisible ? 'is-visible' : ''}`}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">
             Featured Projects
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="gradient-card rounded-2xl overflow-hidden shadow-elegant hover:shadow-hover transition-smooth group hover:-translate-y-2 hover:backdrop-blur-xl opacity-0 animate-fade-in"
-                style={{ 
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animationDelay: `${index * 0.15}s`,
-                  animationFillMode: 'forwards',
-                  transform: hoveredCard === index 
-                    ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-8px) scale(1.02)` 
-                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)',
-                  transformStyle: 'preserve-3d'
-                }}
-                onMouseMove={(e) => handleMouseMove(e, index)}
-                onMouseLeave={handleMouseLeave}
+          {/* Carousel Container */}
+          <div 
+            className="relative group"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-background/90 hover:bg-background text-foreground p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg hover:scale-110"
+              aria-label="Previous project"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-background/90 hover:bg-background text-foreground p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg hover:scale-110"
+              aria-label="Next project"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Carousel Track */}
+            <div 
+              ref={carouselRef}
+              className="overflow-hidden rounded-2xl"
+            >
+              <div 
+                className="flex transition-transform duration-700 ease-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {/* Project header with gradient */}
-                <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
-                
-                {/* Project image */}
-                <div className="overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-accent transition-smooth">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="leading-relaxed mb-6" style={{ color: 'hsl(210, 20%, 85%)' }}>
-                    {project.description}
-                  </p>
+                {projects.map((project, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex-shrink-0 px-2"
+                  >
+                    <div className="gradient-card rounded-2xl overflow-hidden shadow-elegant max-w-4xl mx-auto">
+                      {/* Project header with gradient */}
+                      <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+                      
+                      <div className="grid md:grid-cols-2">
+                        {/* Project image */}
+                        <div className="overflow-hidden">
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-64 md:h-full object-cover"
+                          />
+                        </div>
+                        
+                        <div className="p-8 flex flex-col justify-center">
+                          <h3 className="text-2xl md:text-3xl font-semibold text-accent mb-4">
+                            {project.title}
+                          </h3>
+                          
+                          <p className="text-muted-foreground leading-relaxed mb-6">
+                            {project.description}
+                          </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-3 py-1.5 bg-accent/10 text-accent text-sm rounded-lg font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {project.tags.map((tag, tagIndex) => (
+                              <span
+                                key={tagIndex}
+                                className="px-3 py-1.5 bg-accent/10 text-accent text-sm rounded-lg font-medium"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
 
-                  <div className="flex gap-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth group/btn"
-                    >
-                      <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform" />
-                      Code
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth group/btn"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                      Demo
-                    </Button>
+                          <div className="flex gap-3">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth group/btn"
+                            >
+                              <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform" />
+                              Code
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-smooth group/btn"
+                            >
+                              <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                              Demo
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Progress Dots */}
+            <div className="flex justify-center gap-3 mt-8">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? "bg-accent w-8" 
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2"
+                  }`}
+                  aria-label={`Go to project ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
