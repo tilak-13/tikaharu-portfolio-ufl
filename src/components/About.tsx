@@ -1,4 +1,4 @@
-import { GraduationCap, Code2, Brain, Sparkles } from "lucide-react";
+import { Code2, Brain, Sparkles } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import profilePicture from "@/assets/profile-picture.jpg";
 
@@ -9,21 +9,6 @@ const About = () => {
     { icon: Code2, label: "Full-Stack Dev" },
     { icon: Brain, label: "Machine Learning" },
     { icon: Sparkles, label: "Problem Solver" },
-  ];
-
-  const education = [
-    {
-      degree: "M.S. in Computer & Information Science",
-      institution: "University of Florida",
-      period: "Aug 2025 - May 2027",
-      location: "Gainesville, FL, USA",
-    },
-    {
-      degree: "B.E. in Computer Engineering",
-      institution: "Pulchowk Campus, Tribhuvan University",
-      period: "Nov 2019 - Apr 2024",
-      location: "Kathmandu, Nepal",
-    },
   ];
 
   return (
@@ -39,7 +24,7 @@ const About = () => {
           </h2>
 
           {/* Main About Grid */}
-          <div className="grid lg:grid-cols-5 gap-8 mb-16">
+          <div className="grid lg:grid-cols-5 gap-8">
             {/* Left: Profile Card */}
             <div className="lg:col-span-2 flex flex-col items-center">
               <div className="gradient-card rounded-3xl p-6 shadow-elegant w-full max-w-sm">
@@ -124,45 +109,6 @@ const About = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Education Section */}
-          <div className="gradient-card rounded-3xl p-8 md:p-10 shadow-elegant">
-            <h3 className="text-2xl font-semibold text-white flex items-center gap-3 mb-8">
-              <div className="p-2 bg-accent/20 rounded-lg">
-                <GraduationCap className="h-6 w-6 text-accent" />
-              </div>
-              Education
-            </h3>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-secondary/30 rounded-xl p-6 border border-border/50 hover:border-accent/50 transition-smooth hover:-translate-y-1"
-                >
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent text-sm font-bold">
-                    {index + 1}
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2 pr-10">
-                    {edu.degree}
-                  </h4>
-                  <p className="text-accent font-medium mb-3">
-                    {edu.institution}
-                  </p>
-                  <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/50" />
-                      {edu.period}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/50" />
-                      {edu.location}
-                    </span>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
