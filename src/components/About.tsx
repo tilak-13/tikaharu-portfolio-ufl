@@ -33,7 +33,7 @@ const About = () => {
                     <img
                       src={profilePicture}
                       alt="Tikaharu Sharma"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top scale-125"
                     />
                   </div>
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
