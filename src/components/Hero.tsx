@@ -71,13 +71,19 @@ const Hero = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
+              asChild
               size="lg"
               variant="outline"
               className="border-2 border-primary-foreground bg-primary-foreground text-primary hover:bg-transparent hover:text-primary-foreground transition-smooth"
-              onClick={() => window.open("/TIKAHARU_SHARMA_RESUME.pdf", "_blank")}
             >
-              Resume
-              <Download className="ml-2 h-5 w-5" />
+              <a
+                href={`${import.meta.env.BASE_URL}TIKAHARU_SHARMA_RESUME.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resume
+                <Download className="ml-2 h-5 w-5" />
+              </a>
             </Button>
           </div>
         </div>
