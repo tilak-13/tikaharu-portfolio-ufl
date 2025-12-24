@@ -1,15 +1,45 @@
-import { Code2, Brain, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import profilePicture from "@/assets/profile-picture.jpg";
+
+// Import gallery images
+import gatorImg from "@/assets/about-gallery/gator.jpg";
+import manchesterImg from "@/assets/about-gallery/manchester.jpg";
+import nepalFlagImg from "@/assets/about-gallery/nepal-flag.jpg";
+import suitImg from "@/assets/about-gallery/suit.jpg";
+import kimonoImg from "@/assets/about-gallery/kimono.jpg";
+import tajMahalImg from "@/assets/about-gallery/taj-mahal.jpg";
+import capitolImg from "@/assets/about-gallery/capitol.jpg";
+
+const galleryImages = [
+  { src: kimonoImg, alt: "Tikaharu in traditional Japanese kimono" },
+  { src: gatorImg, alt: "Tikaharu at UF Bull Gator statue" },
+  { src: manchesterImg, alt: "Tikaharu with Manchester City flag" },
+  { src: nepalFlagImg, alt: "Tikaharu with Nepal flag" },
+  { src: suitImg, alt: "Tikaharu in formal attire" },
+  { src: tajMahalImg, alt: "Tikaharu at Taj Mahal" },
+  { src: capitolImg, alt: "Tikaharu at US Capitol" },
+];
 
 const About = () => {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.1 });
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const highlights = [
-    { icon: Code2, label: "Full-Stack Dev" },
-    { icon: Brain, label: "Machine Learning" },
-    { icon: Sparkles, label: "Problem Solver" },
-  ];
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
+  };
 
   return (
     <section
@@ -19,95 +49,92 @@ const About = () => {
     >
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-            About Me
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground">
+            Beyond the Code
           </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            Get to know the person behind the pixels
+          </p>
 
-          {/* Main About Grid */}
-          <div className="grid lg:grid-cols-5 gap-8">
-            {/* Left: Profile Card */}
-            <div className="lg:col-span-2 flex flex-col items-center">
-              <div className="gradient-card rounded-3xl p-6 shadow-elegant w-full max-w-sm">
-                <div className="relative mb-6">
-                  <div className="w-40 h-40 mx-auto rounded-2xl overflow-hidden border-2 border-accent/30 shadow-lg">
+          {/* Main Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Image Carousel */}
+            <div className="relative group">
+              <div className="gradient-card rounded-3xl p-4 shadow-elegant">
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                  {galleryImages.map((image, index) => (
                     <img
-                      src={profilePicture}
-                      alt="Tikaharu Sharma"
-                      className="w-full h-full object-cover object-top scale-125"
+                      key={index}
+                      src={image.src}
+                      alt={image.alt}
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                        index === currentIndex 
+                          ? "opacity-100 scale-100" 
+                          : "opacity-0 scale-105"
+                      }`}
                     />
-                  </div>
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-accent text-accent-foreground text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg">
-                      Open to Work
-                    </span>
-                  </div>
+                  ))}
+                  
+                  {/* Navigation Arrows */}
+                  <button
+                    onClick={goToPrevious}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
 
-                <h3 className="text-xl font-bold text-white text-center mb-2">
-                  Tikaharu Sharma
-                </h3>
-                <p className="text-accent text-sm font-medium text-center mb-6">
-                  Software Engineer
-                </p>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap justify-center gap-2">
-                  {highlights.map((item, index) => (
-                    <div
+                {/* Dots Indicator */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {galleryImages.map((_, index) => (
+                    <button
                       key={index}
-                      className="flex items-center gap-1.5 bg-secondary/50 px-3 py-1.5 rounded-full text-xs text-muted-foreground"
-                    >
-                      <item.icon className="w-3.5 h-3.5 text-accent" />
-                      {item.label}
-                    </div>
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentIndex 
+                          ? "bg-accent w-6" 
+                          : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right: Bio + Stats */}
-            <div className="lg:col-span-3 flex flex-col justify-center">
-              <div className="space-y-6">
-                <div className="gradient-card rounded-2xl p-6 shadow-elegant border-l-4 border-accent">
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    I'm a passionate Computer Engineer currently pursuing my
-                    Master's degree in Computer & Information Science at the
-                    University of Florida, where I'm deepening my expertise in
-                    Software Engineering and Machine Learning.
-                  </p>
-                </div>
+            {/* Right: Paragraphs */}
+            <div className="space-y-6">
+              <div className="gradient-card rounded-2xl p-6 shadow-elegant border-l-4 border-accent">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  I'm a passionate Computer Engineer currently pursuing my
+                  Master's degree in Computer & Information Science at the
+                  University of Florida, where I'm deepening my expertise in
+                  Software Engineering and Machine Learning.
+                </p>
+              </div>
 
-                <div className="gradient-card rounded-2xl p-6 shadow-elegant border-l-4 border-accent/50">
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    With a strong foundation in full-stack development and
-                    machine learning, I love building scalable web applications
-                    and intelligent systems that solve real-world problems. My
-                    journey has been driven by curiosity and a desire to create
-                    technology that makes a meaningful impact.
-                  </p>
-                </div>
-
-                {/* Quick Stats */}
-                <div className="grid grid-cols-3 gap-4 pt-4">
-                  <div className="text-center gradient-card rounded-xl p-4 shadow-elegant hover:shadow-hover transition-smooth">
-                    <div className="text-3xl font-bold text-accent">2+</div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Years Experience
-                    </div>
-                  </div>
-                  <div className="text-center gradient-card rounded-xl p-4 shadow-elegant hover:shadow-hover transition-smooth">
-                    <div className="text-3xl font-bold text-accent">10+</div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Projects Built
-                    </div>
-                  </div>
-                  <div className="text-center gradient-card rounded-xl p-4 shadow-elegant hover:shadow-hover transition-smooth">
-                    <div className="text-3xl font-bold text-accent">5+</div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Technologies
-                    </div>
-                  </div>
-                </div>
+              <div className="gradient-card rounded-2xl p-6 shadow-elegant border-l-4 border-accent/50">
+                <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+                  Fun fact about my name: "Tikaharu" tends to confuse a lot of people 😄. 
+                  It's actually a mix of two cultures — "Tika" comes from a Nepali word, 
+                  and "Haru" is inspired by Japan, where I was born. And before you ask… 
+                  no, I don't speak Japanese 😂.
+                </p>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  Outside of coding, I'm a huge sports enthusiast. You'll usually find me 
+                  watching football (or soccer, as it's called here in the US), cricket, 
+                  basketball, baseball, or even a good game of chess. I also love spending 
+                  my downtime watching movies and TV series — both Bollywood and Hollywood — 
+                  because a good story is just as exciting as a good algorithm.
+                </p>
               </div>
             </div>
           </div>
