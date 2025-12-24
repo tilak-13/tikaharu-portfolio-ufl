@@ -169,11 +169,11 @@ const Projects = () => {
                     <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
                     
                     {/* Project image */}
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden bg-muted">
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-48 object-contain"
                       />
                     </div>
                     
